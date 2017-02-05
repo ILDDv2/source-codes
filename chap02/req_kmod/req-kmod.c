@@ -5,10 +5,13 @@ static int demodev_init(void)
 {
 	int err = 0;
 	pr_info("++demodev_init()\n"); 
-	err = request_module("demodev"); 
-	if (err)
-		pr_info("request module failed: %d\n", err);
+	err = request_module("cpuid"); 
+	if (err) {
+		pr_err("request module failed: %d\n", err);
+		return err;
+	}
 
+	pr_info("cpuid kmod loaded\n");
 	return 0;
 }
 
